@@ -1,0 +1,11 @@
+  private boolean hasLeft(int paramInt)
+  {
+    return paramInt * 2 <= this.last;
+  }
+  
+  private boolean hasRight(int paramInt)
+  {
+    return paramInt * 2 + 1 <= this.last;
+  }
+
+for has left and has right ?? why last ?? 

@@ -1,0 +1,26 @@
+Waiting for user action
+procedure upHeapBubbling(H[])
+    index := length(H) - 1
+    while index > 0
+        parent := (index - 1) / 2
+        if (H[index] >= H[parent])
+            return
+        swap H[index] and H[parent]
+        index := parent
+    end while
+end procedure
+procedure downHeapBubbling(H[])
+    index := 0
+    while true
+        child := index * 2 + 1
+        if (child >= H.size)
+            return
+        if (child + 1 < H.size)
+            if (H[child] > H[child+1])
+                child := child + 1
+        if (H[index] <= H[child])
+            return
+        swap H[index] and H[child]
+        index := child
+    end while
+end procedure

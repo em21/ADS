@@ -1,0 +1,14 @@
+if (i>=last){return;}
+if (hasLeft()){}
+	if (hasRight()){
+		if (leftchild< right child){
+		dothings
+		}
+		else 
+		do other things 
+	if (left child < parent){
+	swap and stuff
+	}
+else 
+	broken
+	}

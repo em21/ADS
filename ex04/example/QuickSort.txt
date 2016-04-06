@@ -1,0 +1,22 @@
+funct partition(array, left, right, pivotIndex)
+      pivotValue := array[pivotIndex]
+      swap array[pivotIndex] and array[right]
+      storeIndex := left
+      for i from left to right - 1
+          if array[i] < pivotValue
+              swap array[i] and array[storeIndex]
+              storeIndex := storeIndex + 1
+      swap array[storeIndex] and array[right]
+      return storeIndex
+
+
+
+funct quicksort(array, left, right)
+   if left < right
+     choose any pivotIndex s.t. left<=pivotIndex<=right
+ 
+     pivotNewIndex:=partition(array,left,right,pivotIndex)
+ 
+     quicksort(array,left,pivotNewIndex-1)
+ 
+     quicksort(array,pivotNewIndex+1,right)

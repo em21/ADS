@@ -1,0 +1,6 @@
+While (!finished)
+  for i->n-1
+    if A[i]>A[i+1]
+      swap(A[i],A[i+1])
+  if swapped==false
+    finished=true
