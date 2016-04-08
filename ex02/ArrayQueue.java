@@ -35,38 +35,32 @@ public class ArrayQueue<E> {
     }
 	
     public void enqueue(E element) throws ArrayQueueException {
-		if (rear<n){
-			Q[rear]=element; 
-			rear++;
-			size++;
-		}
-		else{throw new ArrayQueueException ("Array overflow");}
+	    if (size() >= n){
+		    throw new ArrayQueueException();}
+	    Q[rear]=element;
+	    rear=(rear + 1) % n;
+	    size ++;
 	}
     
     public E dequeue() throws ArrayQueueException {
-		if (Q[front] != null){
-			rear--;
-			E last = Q[rear];
-			Q[rear] = null;
-			size--;
-			return last;
-		}
-		else{throw new ArrayQueueException("Cannot remove from an empty list");}
-	}
+         E e = front();
+		 front = (front + 1)% n;
+         size --;
+         return e;
+    }
+	//Can you check here so we not taking an element from an empty list please - that bad.	
    
     public String toString(){
-		if (size() == 0){return "[]";}
-		String s = "[";
-		int i = 0; 
-		while (Q[i+1] != null){
-			s += Q[i].toString() + ",";
-			i++;
-		}
-	    return s + (Q[rear-1]).toString() +"]";
+	    String s ="[";
+		for (int i = front; i < n; i=(i+1)%n ){
+			s  += (Q[i].toString()) + ",";
+			//i = (i + 1) % n;
+		}		
+		return s ;
 	}
     //
     // IMPLEMENT ME
-    //
+    //I don't think this is entirely correct 
     //
     // NOTE: if the queue contains 1,2,3 then return "[1,2,3]"
     //       if the queue contains 1 then return "[1]"
