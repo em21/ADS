@@ -23,33 +23,47 @@ public class ArrayQueue<E> {
     // NOTE: java does not allow creation of array with parametrised type!
     //
 	
-    public int size(){return -999;}
-    //
-    // IMPLEMENT ME
-    //
+    public int size(){return size;}
+  
 	 
-    public boolean isEmpty(){return false;}
-    //
-    // IMPLEMENT ME
-    //
+    public boolean isEmpty(){return size ==0;}
+ 
 
-    public E front() throws ArrayQueueException {return null;}
-    //
-    // IMPLEMENT ME
-    //
+    public E front() throws ArrayQueueException {
+		if (Q[front] != null) {return Q[front];}
+		else{throw new ArrayQueueException("Array underflow");}
+    }
 	
-    public void enqueue(E element) throws ArrayQueueException {}
-    //
-    // IMPLEMENT ME
-    //
-
+    public void enqueue(E element) throws ArrayQueueException {
+		if (rear<n){
+			Q[rear]=element; 
+			rear++;
+			size++;
+		}
+		else{throw new ArrayQueueException ("Array overflow");}
+	}
     
-    public E dequeue() throws ArrayQueueException {return null;}
-    //
-    // IMPLEMENT ME
-    //
-    
-    public String toString(){return "";}
+    public E dequeue() throws ArrayQueueException {
+		if (Q[front] != null){
+			rear--;
+			E last = Q[rear];
+			Q[rear] = null;
+			size--;
+			return last;
+		}
+		else{throw new ArrayQueueException("Cannot remove from an empty list");}
+	}
+   
+    public String toString(){
+		if (size() == 0){return "[]";}
+		String s = "[";
+		int i = 0; 
+		while (Q[i+1] != null){
+			s += Q[i].toString() + ",";
+			i++;
+		}
+	    return s + (Q[rear-1]).toString() +"]";
+	}
     //
     // IMPLEMENT ME
     //
